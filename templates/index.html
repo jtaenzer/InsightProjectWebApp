@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Job Title Prediction Webapp</title>
+        <title>ClusTitle Webapp</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="../static/assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -21,7 +21,7 @@
     <!-- Try Section -->
 	<section class="bg-primary mb-0" id="try">
   	<div class="container">
-    	<h2 class="text-center text-white">Enter a comma separated list of skills from your CV</h2>
+    	<h2 class="text-center text-white">ClusTitle: Enter a comma separated list of skills from your CV</h2>
     	<hr class="star-light mb-5">
           	<div class="col-sm m-3 text-center">
                 	<form action="/output" method="GET" id="user_input">
@@ -39,36 +39,43 @@
 
   	{% elif my_form_result=='NotEmpty' %}
 
-	  	<div class="row mt-4 justify-content-center">
-        	<h4 class="text-light text-center text-uppercase">Your skills:</h4>
-  	</div>
-	  	<div class="row p-1 m-1 justify-content-center">
-        	<div class="col-md- w-50 list-group">
-               	<ul class="list-group">
-               	<h4 class="text-center">
-               	<li class="list-group-item d-flex justify-content-between align-items-center active">
-                         	<b>{{my_input}}</b>
-                      	</li>
-                    	</h4>
-              	</ul>
-        	</div>
-  	</div>
-
-  	<div class="row mt-4 justify-content-center">
-        	<h4 class="text-light text-center text-uppercase">Predicted job title:</h4>
-  	</div>
-  	<div class="row p-1 m-1 justify-content-center">
-        	<div class="col-md- w-50 list-group">
-               	<ul class="list-group">
-               	<h4 class="text-center">
-               	<li class="list-group-item d-flex justify-content-between align-items-center active">
-                         	<b>{{my_output}}</b>
-                      	</li>
-                    	</h4>
-              	</ul>
-        	</div>
-  	</div>
-
+		<div class="row mt-4 justify-content-center">
+                <p style="color:#FF0000";>Skills highlighted in red are missing from your list, and are good candidates for retraining!</p>
+		<li class="list-group-item d-flex justify-content-between align-items-center active">
+		<table style="width:100%" cellpadding="10">
+			<tr>
+				<th>Job Title</th>
+				<th>Compatibility</th>
+				<th>Core skills</th>
+			</tr>
+			<tr>
+				<td>{{title_0}}</td>
+				<td>{{comp_0}}</td>
+				<td>{{skills_0}}, <p style="color:#FF0000";><u>{{missing_skills_0}}</u></p></td>
+			</tr>
+			<tr>
+				<td>{{title_1}}</td>
+				<td>{{comp_1}}</td>
+				<td>{{skills_1}}, <p style="color:#FF0000";><u>{{missing_skills_1}}</u></p></td>
+			</tr>
+			<tr>
+				<td>{{title_2}}</td>
+				<td>{{comp_2}}</td>
+				<td>{{skills_2}}, <p style="color:#FF0000";><u>{{missing_skills_2}}</u></p></td>
+			</tr>
+			<tr>
+				<td>{{title_3}}</td>
+				<td>{{comp_3}}</td>
+				<td>{{skills_3}}</td>
+			</tr>
+			<tr>
+				<td>{{title_4}}</td>
+				<td>{{comp_4}}</td>
+				<td>{{skills_4}}</td>
+			</tr>
+		</table>
+		</li>
+		</div>
   	{% else %}
   	{% endif %}
   	</div>
