@@ -9,16 +9,6 @@ import pandas as pd
 import numpy as np
 
 save_path = "/home/ubuntu/InsightProjectWebApp/binaries/"
-"""
-countvec = load(save_path + "count_vectorizer.joblib")
-label_encoder = load(save_path + "cluster_label_encoder.joblib")
-title_encoding = label_encoder.classes_.tolist()
-tfidf = load(save_path + "tfidf_transformer.joblib")
-scaler = load(save_path + "scaler.joblib")
-svd = load(save_path + "svd_transformer.joblib")
-model = load(save_path + "MLPClassifier_model.joblib")
-core_skills_dict = load(save_path + "core_skills_dict.joblib")
-"""
 
 countvec = load(save_path + "count_vectorizer.joblib")
 tfidf = load(save_path + "tfidf_transformer.joblib")
@@ -110,31 +100,6 @@ def recommendation_output():
         missing_skills_3 = ""
         missing_skills_4 = ""
 
-        """
-        svd_mat = svd.transform(tfidf_mat.toarray())
-        test_data = scaler.transform(svd_mat)
-        probs = model.predict_proba(test_data)
-        df = pd.DataFrame(probs.reshape(-1, 1) * 100, columns=['probability'], index=title_encoding)
-        df_sorted = df.sort_values(by='probability', axis=0, ascending=False)
-
-        title_0 = df_sorted.index[0]
-        title_1 = df_sorted.index[1] if df_sorted['probability'][1] > 5 else ""
-        title_2 = df_sorted.index[2] if df_sorted['probability'][2] > 5 else ""
-        title_3 = df_sorted.index[3] if df_sorted['probability'][3] > 5 else ""
-        title_4 = df_sorted.index[4] if df_sorted['probability'][4] > 5 else ""
-
-        comp_0 = "{:.2f}%".format(df_sorted['probability'][0])
-        comp_1 = "{:.2f}%".format(df_sorted['probability'][1]) if title_1 else ""
-        comp_2 = "{:.2f}%".format(df_sorted['probability'][2]) if title_2 else ""
-        comp_3 = "{:.2f}%".format(df_sorted['probability'][3]) if title_3 else ""
-        comp_4 = "{:.2f}%".format(df_sorted['probability'][4]) if title_4 else ""
-
-        skills_0 = ", ".join(core_skills_dict[title_encoding.index(df_sorted.index[0])])
-        skills_1 = ", ".join(core_skills_dict[title_encoding.index(df_sorted.index[1])]) if title_1 else ""
-        skills_2 = ", ".join(core_skills_dict[title_encoding.index(df_sorted.index[2])]) if title_2 else ""
-        skills_3 = ", ".join(core_skills_dict[title_encoding.index(df_sorted.index[3])]) if title_3 else ""
-        skills_4 = ", ".join(core_skills_dict[title_encoding.index(df_sorted.index[4])]) if title_4 else ""
-        """
         return render_template("index.html", my_input=user_input,
                                title_0=title_0, title_1=title_1, title_2=title_2, title_3=title_3, title_4=title_4,
                                comp_0=comp_0, comp_1=comp_1, comp_2=comp_2, comp_3=comp_3, comp_4=comp_4,
